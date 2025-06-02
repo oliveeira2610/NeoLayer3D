@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - NeoLayer3D</title>
+    <meta name="description" content="Detalhes completos do produto, especificações técnicas e opções de personalização.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="NeoLayer3D Logo">
+                    <span class="logo-text">NeoLayer3D</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                    <a href="carrinho.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Início</a> / <a href="categorias.html">Categorias</a> / <a href="categorias.html#pecas-funcionais">Peças Funcionais</a> / <span>Kit de Engrenagens Mecânicas</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="section product-page">
+        <div class="container">
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <img src="images/produto-3.jpg" alt="Kit de Engrenagens Mecânicas" class="product-main-img" id="main-product-img">
+                    <div class="product-thumbnails">
+                        <img src="images/produto-3.jpg" alt="Kit de Engrenagens - Vista Principal" class="product-thumbnail active" onclick="changeImage(this)">
+                        <img src="images/produto-3-2.jpg" alt="Kit de Engrenagens - Vista Lateral" class="product-thumbnail" onclick="changeImage(this)">
+                        <img src="images/produto-3-3.jpg" alt="Kit de Engrenagens - Vista Detalhada" class="product-thumbnail" onclick="changeImage(this)">
+                        <img src="images/produto-3-4.jpg" alt="Kit de Engrenagens - Em Uso" class="product-thumbnail" onclick="changeImage(this)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h1>Kit de Engrenagens Mecânicas</h1>
+                    <div class="product-meta">
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(24 avaliações)</span>
+                        </div>
+                        <div class="product-sku">SKU: PF-ENG-001</div>
+                    </div>
+                    <div class="product-price-detail">R$ 129,90</div>
+                    <div class="product-description">
+                        <p>Kit completo de engrenagens mecânicas impressas em 3D com alta precisão e resistência. Ideal para projetos de robótica, automação e protótipos funcionais.</p>
+                        <p>Nossas engrenagens são produzidas com materiais de alta qualidade, garantindo durabilidade e desempenho consistente mesmo em aplicações exigentes.</p>
+                        <ul>
+                            <li>Conjunto com 15 engrenagens de diferentes tamanhos</li>
+                            <li>Compatível com eixos padrão de 5mm</li>
+                            <li>Material resistente a impactos e desgaste</li>
+                            <li>Precisão de encaixe de 0.1mm</li>
+                            <li>Inclui manual de montagem e aplicações</li>
+                        </ul>
+                    </div>
+                    <div class="product-options">
+                        <label class="option-label">Material:</label>
+                        <select class="option-select">
+                            <option value="pla">PLA Premium - Incluído</option>
+                            <option value="abs">ABS Reforçado (+R$ 20,00)</option>
+                            <option value="petg">PETG Industrial (+R$ 30,00)</option>
+                        </select>
+                        
+                        <label class="option-label">Cor:</label>
+                        <select class="option-select">
+                            <option value="black">Preto</option>
+                            <option value="white">Branco</option>
+                            <option value="gray">Cinza</option>
+                            <option value="blue">Azul</option>
+                            <option value="red">Vermelho</option>
+                        </select>
+                    </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                        <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                    </div>
+                    <div class="product-actions-detail">
+                        <button class="btn btn-primary add-to-cart-btn" onclick="addToCart(3)">Adicionar ao Carrinho</button>
+                        <button class="wishlist-btn" onclick="addToWishlist(3)"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="product-meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Frete grátis para compras acima de R$ 200</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Garantia de 30 dias contra defeitos de fabricação</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Política de devolução em até 7 dias</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="description">Descrição Detalhada</button>
+                    <button class="tab-btn" data-tab="specifications">Especificações</button>
+                    <button class="tab-btn" data-tab="reviews">Avaliações (24)</button>
+                    <button class="tab-btn" data-tab="shipping">Envio e Devolução</button>
+                </div>
+                <div class="tab-content active" id="description">
+                    <h3>Descrição Detalhada</h3>
+                    <p>O Kit de Engrenagens Mecânicas da NeoLayer3D é a solução ideal para projetos que exigem componentes mecânicos precisos e duráveis. Desenvolvido com tecnologia de impressão 3D de última geração, cada engrenagem é produzida com atenção meticulosa aos detalhes, garantindo encaixes perfeitos e funcionamento suave.</p>
+                    
+                    <p>Este kit versátil inclui 15 engrenagens de diferentes tamanhos e configurações, permitindo a criação de diversos sistemas de transmissão e redução. Todas as peças são compatíveis com eixos padrão de 5mm, facilitando a integração com outros componentes e projetos.</p>
+                    
+                    <h4>Aplicações:</h4>
+                    <ul>
+                        <li>Projetos educacionais de robótica</li>
+                        <li>Protótipos funcionais</li>
+                        <li>Sistemas de automação em pequena escala</li>
+                        <li>Modelos mecânicos demonstrativos</li>
+                        <li>Reposição de peças em equipamentos</li>
+                    </ul>
+                    
+                    <h4>Conteúdo do Kit:</h4>
+                    <ul>
+                        <li>5 engrenagens de 10 dentes</li>
+                        <li>4 engrenagens de 20 dentes</li>
+                        <li>3 engrenagens de 30 dentes</li>
+                        <li>2 engrenagens de 40 dentes</li>
+                        <li>1 engrenagem de 50 dentes</li>
+                        <li>Manual de instruções e sugestões de montagem</li>
+                    </ul>
+                    
+                    <p>Nosso processo de fabricação inclui testes rigorosos de resistência e precisão, garantindo que cada kit atenda aos mais altos padrões de qualidade. As engrenagens são projetadas para minimizar o atrito e maximizar a eficiência de transmissão de força.</p>
+                </div>
+                <div class="tab-content" id="specifications">
+                    <h3>Especificações Técnicas</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Característica</th>
+                            <th>Especificação</th>
+                        </tr>
+                        <tr>
+                            <td>Material</td>
+                            <td>PLA Premium (opções de ABS e PETG disponíveis)</td>
+                        </tr>
+                        <tr>
+                            <td>Quantidade de Peças</td>
+                            <td>15 engrenagens</td>
+                        </tr>
+                        <tr>
+                            <td>Diâmetro das Engrenagens</td>
+                            <td>10mm a 50mm</td>
+                        </tr>
+                        <tr>
+                            <td>Espessura</td>
+                            <td>5mm</td>
+                        </tr>
+                        <tr>
+                            <td>Diâmetro do Furo Central</td>
+                            <td>5mm (compatível com eixos padrão)</td>
+                        </tr>
+                        <tr>
+                            <td>Tolerância de Encaixe</td>
+                            <td>0.1mm</td>
+                        </tr>
+                        <tr>
+                            <td>Temperatura Máxima de Operação</td>
+                            <td>60°C (PLA), 85°C (ABS), 75°C (PETG)</td>
+                        </tr>
+                        <tr>
+                            <td>Resistência à Tração</td>
+                            <td>45 MPa (PLA), 40 MPa (ABS), 50 MPa (PETG)</td>
+                        </tr>
+                        <tr>
+                            <td>Peso do Kit</td>
+                            <td>250g</td>
+                        </tr>
+                        <tr>
+                            <td>Dimensões da Embalagem</td>
+                            <td>15cm x 15cm x 5cm</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-content" id="reviews">
+                    <h3>Avaliações dos Clientes</h3>
+                    <div class="reviews-summary">
+                        <div class="reviews-average">
+                            <div class="average-rating">4.5</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="total-reviews">Baseado em 24 avaliações</div>
+                        </div>
+                        <div class="reviews-breakdown">
+                            <div class="breakdown-row">
+                                <div class="stars">5 <i class="fas fa-star"></i></div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%"></div>
+                                </div>
+                                <div class="count">18</div>
+                            </div>
+                            <div class="breakdown-row">
+                                <div class="stars">4 <i class="fas fa-star"></i></div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 15%"></div>
+                                </div>
+                                <div class="count">4</div>
+                            </div>
+                            <div class="breakdown-row">
+                                <div class="stars">3 <i class="fas fa-star"></i></div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 5%"></div>
+                                </div>
+                                <div class="count">1</div>
+                            </div>
+                            <div class="breakdown-row">
+                                <div class="stars">2 <i class="fas fa-star"></i></div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 5%"></div>
+                                </div>
+                                <div class="count">1</div>
+                            </div>
+                            <div class="breakdown-row">
+                                <div class="stars">1 <i class="fas fa-star"></i></div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                                <div class="count">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="review-author">Carlos M.</div>
+                                <div class="review-date">15/05/2025</div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-title">Excelente qualidade e precisão</div>
+                            <div class="review-content">
+                                <p>Comprei este kit para um projeto de robótica educacional e fiquei impressionado com a qualidade das peças. O encaixe é perfeito e as engrenagens funcionam de maneira muito suave. Recomendo fortemente para quem precisa de componentes mecânicos confiáveis.</p>
+                            </div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="review-author">Mariana S.</div>
+                                <div class="review-date">02/05/2025</div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-title">Superou minhas expectativas</div>
+                            <div class="review-content">
+                                <p>As engrenagens são muito bem acabadas e resistentes. Já testei em um projeto que exige bastante das peças e elas estão aguentando muito bem. O manual que acompanha o kit também é muito útil com várias sugestões de montagem.</p>
+                            </div>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="review-author">Rafael T.</div>
+                                <div class="review-date">28/04/2025</div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="review-title">Bom produto, mas poderia ter mais opções</div>
+                            <div class="review-content">
+                                <p>A qualidade das engrenagens é excelente, mas senti falta de algumas configurações diferentes. Mesmo assim, consegui adaptar para o meu projeto e o resultado foi satisfatório. Recomendo para quem precisa de peças de qualidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="load-more">
+                        <button class="btn btn-secondary">Carregar Mais Avaliações</button>
+                    </div>
+                </div>
+                <div class="tab-content" id="shipping">
+                    <h3>Informações de Envio e Devolução</h3>
+                    <div class="shipping-info">
+                        <h4>Envio</h4>
+                        <ul>
+                            <li>Prazo de envio: 1-3 dias úteis após a confirmação do pagamento</li>
+                            <li>Métodos de envio disponíveis:
+                                <ul>
+                                    <li>PAC: 5-10 dias úteis</li>
+                                    <li>SEDEX: 2-3 dias úteis</li>
+                                    <li>SEDEX 10: Entrega no dia seguinte até às 10h (disponível apenas para capitais)</li>
+                                </ul>
+                            </li>
+                            <li>Frete grátis para compras acima de R$ 200,00 (PAC)</li>
+                            <li>Rastreamento disponível para todos os métodos de envio</li>
+                        </ul>
+                        
+                        <h4>Política de Devolução</h4>
+                        <ul>
+                            <li>Prazo de 7 dias corridos após o recebimento para devolução por arrependimento</li>
+                            <li>Garantia de 30 dias contra defeitos de fabricação</li>
+                            <li>O produto deve ser devolvido em sua embalagem original, sem sinais de uso</li>
+                            <li>Em caso de defeito, enviaremos um novo produto ou realizaremos o reembolso integral</li>
+                            <li>Para iniciar uma devolução, entre em contato com nosso suporte pelo e-mail: suporte@neolayer3d.com.br</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2 class="section-title">Produtos Relacionados</h2>
+                <div class="products-grid">
+                    <div class="product-card fade-in">
+                        <img src="images/produto-5.jpg" alt="Suporte para Monitor" class="product-img">
+                        <div class="product-content">
+                            <span class="product-category">Peças Funcionais</span>
+                            <h3 class="product-title">Suporte Ergonômico para Monitor</h3>
+                            <div class="product-price">R$ 159,90</div>
+                            <div class="product-actions">
+                                <a href="produto.html?id=5" class="btn btn-secondary">Ver Detalhes</a>
+                                <button class="btn btn-primary add-to-cart" data-id="5"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/produto-6.jpg" alt="Conectores Elétricos" class="product-img">
+                        <div class="product-content">
+                            <span class="product-category">Peças Funcionais</span>
+                            <h3 class="product-title">Kit de Conectores Elétricos</h3>
+                            <div class="product-price">R$ 79,90</div>
+                            <div class="product-actions">
+                                <a href="produto.html?id=6" class="btn btn-secondary">Ver Detalhes</a>
+                                <button class="btn btn-primary add-to-cart" data-id="6"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/produto-7.jpg" alt="Suportes para Prateleira" class="product-img">
+                        <div class="product-content">
+                            <span class="product-category">Peças Funcionais</span>
+                            <h3 class="product-title">Suportes Modulares para Prateleira</h3>
+                            <div class="product-price">R$ 89,90</div>
+                            <div class="product-actions">
+                                <a href="produto.html?id=7" class="btn btn-secondary">Ver Detalhes</a>
+                                <button class="btn btn-primary add-to-cart" data-id="7"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/produto-11.jpg" alt="Conjunto de Parafusos" class="product-img">
+                        <div class="product-content">
+                            <span class="product-category">Peças Funcionais</span>
+                            <h3 class="product-title">Conjunto de Parafusos e Porcas</h3>
+                            <div class="product-price">R$ 49,90</div>
+                            <div class="product-actions">
+                                <a href="produto.html?id=11" class="btn btn-secondary">Ver Detalhes</a>
+                                <button class="btn btn-primary add-to-cart" data-id="11"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="newsletter-title">Receba Novidades e Ofertas Exclusivas</h2>
+            <p>Inscreva-se em nossa newsletter e fique por dentro das últimas tendências em impressão 3D.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="newsletter-btn">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NeoLayer3D</h3>
+                    <p>Soluções profissionais em impressão 3D para transformar suas ideias em realidade.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="categorias.html">Produtos</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categorias</h3>
+                    <ul class="footer-links">
+                        <li><a href="categorias.html#pecas-funcionais">Peças Funcionais</a></li>
+                        <li><a href="categorias.html#decoracao">Decoração</a></li>
+                        <li><a href="categorias.html#prototipos">Protótipos</a></li>
+                        <li><a href="categorias.html#educacional">Educacional</a></li>
+                        <li><a href="categorias.html#personalizado">Personalizado</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Tecnologia, 1000 - São Paulo</li>
+                        <li><i class="fas fa-phone"></i> (11) 3456-7890</li>
+                        <li><i class="fas fa-envelope"></i> contato@neolayer3d.com.br</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NeoLayer3D. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/database.js"></script>
+    <script>
+        // Função para trocar a imagem principal
+        function changeImage(element) {
+            document.getElementById('main-product-img').src = element.src;
+            
+            // Remove a classe active de todas as miniaturas
+            let thumbnails = document.getElementsByClassName('product-thumbnail');
+            for (let i = 0; i < thumbnails.length; i++) {
+                thumbnails[i].classList.remove('active');
+            }
+            
+            // Adiciona a classe active à miniatura clicada
+            element.classList.add('active');
+        }
+        
+        // Funções para controle de quantidade
+        function increaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue < 10) {
+                quantityInput.value = currentValue + 1;
+            }
+        }
+        
+        function decreaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+        
+        // Função para alternar entre as abas
+        document.addEventListener('DOMContentLoaded', function() {
+            let tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove a classe active de todos os botões e conteúdos
+                    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+                        btn.classList.remove('active');
+                    });
+                    document.querySelectorAll('.tab-content').forEach(function(content) {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Adiciona a classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Mostra o conteúdo correspondente
+                    let tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
