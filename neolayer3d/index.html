@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoLayer3D - Impressão 3D Profissional</title>
+    <meta name="description" content="NeoLayer3D - Soluções profissionais de impressão 3D para protótipos, peças funcionais, decoração e muito mais.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="NeoLayer3D Logo">
+                    <span class="logo-text">NeoLayer3D</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                    <a href="carrinho.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Transforme suas ideias em realidade</h1>
+                <p class="hero-subtitle">Soluções profissionais de impressão 3D para protótipos, peças funcionais, decoração e muito mais.</p>
+                <div class="hero-buttons">
+                    <a href="categorias.html" class="btn btn-primary">Explorar Produtos</a>
+                    <a href="contato.html" class="btn btn-outline">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section class="section categories">
+        <div class="container">
+            <h2 class="section-title">Categorias em Destaque</h2>
+            <div class="categories-grid">
+                <div class="category-card fade-in">
+                    <img src="images/categoria-pecas-funcionais.jpg" alt="Peças Funcionais" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">Peças Funcionais</h3>
+                        <p class="category-description">Engrenagens, suportes, conectores e peças de precisão para diversas aplicações.</p>
+                        <a href="categorias.html#pecas-funcionais" class="btn btn-secondary">Ver Produtos</a>
+                    </div>
+                </div>
+                <div class="category-card fade-in">
+                    <img src="images/categoria-decoracao.jpg" alt="Decoração" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">Decoração</h3>
+                        <p class="category-description">Esculturas, vasos, porta-retratos e objetos de arte para decorar ambientes.</p>
+                        <a href="categorias.html#decoracao" class="btn btn-secondary">Ver Produtos</a>
+                    </div>
+                </div>
+                <div class="category-card fade-in">
+                    <img src="images/categoria-prototipos.jpg" alt="Protótipos" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">Protótipos</h3>
+                        <p class="category-description">Maquetes arquitetônicas, protótipos de produtos e modelos conceituais.</p>
+                        <a href="categorias.html#prototipos" class="btn btn-secondary">Ver Produtos</a>
+                    </div>
+                </div>
+                <div class="category-card fade-in">
+                    <img src="images/categoria-educacional.jpg" alt="Educacional" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">Educacional</h3>
+                        <p class="category-description">Modelos anatômicos, réplicas históricas e ferramentas didáticas.</p>
+                        <a href="categorias.html#educacional" class="btn btn-secondary">Ver Produtos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="section featured-products">
+        <div class="container">
+            <h2 class="section-title">Produtos em Destaque</h2>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <span class="product-badge">Novo</span>
+                    <img src="images/produto-1.jpg" alt="Suporte para Smartphone" class="product-img">
+                    <div class="product-content">
+                        <span class="product-category">Acessórios</span>
+                        <h3 class="product-title">Suporte Ajustável para Smartphone</h3>
+                        <div class="product-price">R$ 49,90</div>
+                        <div class="product-actions">
+                            <a href="produto.html?id=1" class="btn btn-secondary">Ver Detalhes</a>
+                            <button class="btn btn-primary add-to-cart" data-id="1"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="images/produto-2.jpg" alt="Vaso Geométrico" class="product-img">
+                    <div class="product-content">
+                        <span class="product-category">Decoração</span>
+                        <h3 class="product-title">Vaso Geométrico Moderno</h3>
+                        <div class="product-price">R$ 89,90</div>
+                        <div class="product-actions">
+                            <a href="produto.html?id=2" class="btn btn-secondary">Ver Detalhes</a>
+                            <button class="btn btn-primary add-to-cart" data-id="2"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <span class="product-badge">Popular</span>
+                    <img src="images/produto-3.jpg" alt="Kit de Engrenagens" class="product-img">
+                    <div class="product-content">
+                        <span class="product-category">Peças Funcionais</span>
+                        <h3 class="product-title">Kit de Engrenagens Mecânicas</h3>
+                        <div class="product-price">R$ 129,90</div>
+                        <div class="product-actions">
+                            <a href="produto.html?id=3" class="btn btn-secondary">Ver Detalhes</a>
+                            <button class="btn btn-primary add-to-cart" data-id="3"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <img src="images/produto-4.jpg" alt="Modelo Anatômico" class="product-img">
+                    <div class="product-content">
+                        <span class="product-category">Educacional</span>
+                        <h3 class="product-title">Modelo Anatômico do Coração Humano</h3>
+                        <div class="product-price">R$ 199,90</div>
+                        <div class="product-actions">
+                            <a href="produto.html?id=4" class="btn btn-secondary">Ver Detalhes</a>
+                            <button class="btn btn-primary add-to-cart" data-id="4"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="categorias.html" class="btn btn-outline">Ver Todos os Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section class="section about">
+        <div class="container">
+            <h2 class="section-title">Sobre a NeoLayer3D</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>A NeoLayer3D é uma empresa especializada em impressão 3D de alta qualidade, oferecendo soluções personalizadas para diversos segmentos do mercado.</p>
+                    <p>Com tecnologia de ponta e profissionais altamente qualificados, garantimos precisão, durabilidade e acabamento impecável em todos os nossos produtos.</p>
+                    <p>Nossa missão é transformar ideias em objetos reais, contribuindo para a inovação e o desenvolvimento de projetos criativos e funcionais.</p>
+                    <a href="sobre.html" class="btn btn-outline" style="margin-top: 20px;">Conheça Nossa História</a>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="images/sobre-nos.jpg" alt="Equipe NeoLayer3D">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">O que Nossos Clientes Dizem</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-item fade-in">
+                    <p class="testimonial-text">"Os protótipos desenvolvidos pela NeoLayer3D superaram todas as nossas expectativas. A qualidade e precisão foram fundamentais para o sucesso do nosso projeto."</p>
+                    <div class="testimonial-author">Ricardo Mendes</div>
+                    <div class="testimonial-role">Engenheiro de Produto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="newsletter-title">Receba Novidades e Ofertas Exclusivas</h2>
+            <p>Inscreva-se em nossa newsletter e fique por dentro das últimas tendências em impressão 3D.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="newsletter-btn">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NeoLayer3D</h3>
+                    <p>Soluções profissionais em impressão 3D para transformar suas ideias em realidade.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="categorias.html">Produtos</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categorias</h3>
+                    <ul class="footer-links">
+                        <li><a href="categorias.html#pecas-funcionais">Peças Funcionais</a></li>
+                        <li><a href="categorias.html#decoracao">Decoração</a></li>
+                        <li><a href="categorias.html#prototipos">Protótipos</a></li>
+                        <li><a href="categorias.html#educacional">Educacional</a></li>
+                        <li><a href="categorias.html#personalizado">Personalizado</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Tecnologia, 1000 - São Paulo</li>
+                        <li><i class="fas fa-phone"></i> (11) 3456-7890</li>
+                        <li><i class="fas fa-envelope"></i> contato@neolayer3d.com.br</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NeoLayer3D. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/database.js"></script>
+</body>
+</html>
