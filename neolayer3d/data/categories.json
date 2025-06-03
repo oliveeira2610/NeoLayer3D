@@ -14,6 +14,13 @@
     "featured": true
   },
   {
+    "id": "escritorio",
+    "name": "Escritório",
+    "description": "Suportes para celular, organizadores, porta-objetos e gadgets.",
+    "image": "images/categoria-decoracao.jpg",
+    "featured": true
+  },
+  {
     "id": "prototipos",
     "name": "Protótipos",
     "description": "Maquetes arquitetônicas, protótipos de produtos e modelos conceituais.",
@@ -37,7 +44,7 @@
   {
     "id": "acessorios",
     "name": "Acessórios",
-    "description": "Suportes para celular, organizadores, porta-objetos e gadgets.",
+    "description": "Colocar depois",
     "image": "images/categoria-acessorios.jpg",
     "featured": false
   },
