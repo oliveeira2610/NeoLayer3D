@@ -1,0 +1,225 @@
+/* Header Styles */
+.header {
+    background: linear-gradient(to right, var(--azul-escuro), var(--azul-medio));
+    color: var(--branco);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--sombra-padrao);
+    height: 80px; /* Fixed height for consistency */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Ensure navbar takes full header height */
+    padding: 0; /* Remove padding if using container */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Ensure link doesn't have underline */
+}
+
+.logo-img {
+    height: 50px; /* Slightly smaller logo */
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--branco);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--branco);
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    text-decoration: none;
+    transition: var(--transicao-padrao);
+}
+
+.nav-links a::after {
+    content: "."; /* Use dot for screen readers, hide visually */
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--verde-neon);
+    transition: var(--transicao-padrao);
+    visibility: hidden; /* Hide the dot */
+}
+
+.nav-links a:hover,
+.nav-links a.nav-active { /* Style for active NavLink */
+    color: var(--verde-neon);
+}
+
+.nav-links a:hover::after,
+.nav-links a.nav-active::after {
+    width: 100%;
+    visibility: visible;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-icon {
+    position: relative;
+    color: var(--branco);
+    font-size: 1.3rem;
+    transition: var(--transicao-padrao);
+}
+
+.cart-icon:hover {
+    color: var(--verde-neon);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: var(--verde-neon);
+    color: var(--azul-escuro);
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-menu,
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-greeting {
+    color: var(--cinza-claro);
+    font-size: 0.9rem;
+    margin-right: 10px;
+}
+
+.btn-logout {
+    background: none;
+    border: 1px solid var(--verde-neon);
+    color: var(--verde-neon);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transicao-padrao);
+}
+
+.btn-logout:hover {
+    background-color: var(--verde-neon);
+    color: var(--azul-escuro);
+}
+
+.btn-nav-action {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    background-color: transparent;
+    border: 1px solid var(--branco);
+    color: var(--branco);
+    border-radius: 4px;
+    transition: var(--transicao-padrao);
+}
+
+.btn-nav-action:hover {
+    background-color: var(--branco);
+    color: var(--azul-escuro);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--branco);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1100; /* Ensure it's above nav links */
+}
+
+/* Responsive Header */
+@media (max-width: 992px) {
+    .nav-links li {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0; /* Start from top */
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--azul-escuro);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center links vertically */
+        padding: 0;
+        transition: left 0.4s ease-in-out;
+        z-index: 1050; /* Below header but above content */
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .auth-links {
+        /* Hide auth links in mobile nav actions, show in menu */
+        display: none; 
+    }
+    .user-menu {
+        /* Hide user menu in mobile nav actions, show in menu */
+        display: none;
+    }
+
+    /* Add auth/user links to mobile menu */
+    .nav-links.active .auth-links-mobile,
+    .nav-links.active .user-menu-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+    }
+}
+
