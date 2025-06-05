@@ -16,3 +16,6 @@ INSERT OR IGNORE INTO products (name, description, price, stock, image_url, cate
   ('Notebook Pro', 'Notebook com processador i7, 16GB RAM, SSD 512GB', 4599.00, 30, '/images/products/notebook.jpg', 2),
   ('Console GameStation 5', 'Console de última geração com 1TB de armazenamento', 4499.90, 20, '/images/products/console.jpg', 3),
   ('Fones de Ouvido Bluetooth', 'Fones sem fio com cancelamento de ruído', 499.90, 100, '/images/products/fones.jpg', 1);
+
+
+  UPDATE users SET name = 'Gabriel de Oliveira Rodrigues', email = 'bielolirodrigues@gmail.com', is_admin = 1 WHERE id = 4;

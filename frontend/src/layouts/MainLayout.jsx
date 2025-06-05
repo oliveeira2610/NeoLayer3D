@@ -1,17 +1,17 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-// Import Header and Footer components once created
-// import Header from '../components/layout/Header';
-// import Footer from '../components/layout/Footer';
+import Header from '../components/layout/Header'; // Import Header
+import Footer from '../components/layout/Footer'; // Import Footer
+import './MainLayout.css'; // Create CSS for layout styling
 
 function MainLayout() {
   return (
     <div className="main-layout">
-      {/* <Header /> */}
+      <Header />
       <main className="main-content">
         <Outlet /> {/* Child routes will render here */}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
