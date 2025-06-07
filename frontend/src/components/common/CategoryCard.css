@@ -1,0 +1,39 @@
+/* CategoryCard Styles */
+.category-card {
+    background-color: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--sombra-padrao);
+    transition: var(--transicao-padrao);
+    text-align: center;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.category-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Make the whole card clickable */
+}
+
+.category-card-img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    display: block; /* Remove extra space below image */
+}
+
+.category-card-content {
+    padding: 20px 15px;
+}
+
+.category-card-title {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--azul-escuro);
+    font-weight: 600;
+}
+
