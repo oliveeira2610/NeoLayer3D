@@ -116,6 +116,19 @@ function createTables() {
 );
 `;
 
+const createCartItemsTable = `
+  CREATE TABLE IF NOT EXISTS cart_items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity INTEGER DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(user_id) REFERENCES users(id),
+    FOREIGN KEY(product_id) REFERENCES products(id),
+    UNIQUE(user_id, product_id)
+  );
+`;
+
   db.serialize(() => {
     db.run(createUsersTable, (err) => {
       if (err) console.error('Erro ao criar tabela users:', err.message);
@@ -146,16 +159,19 @@ function createTables() {
       if (err) console.error('Erro ao criar tabela reviews:', err.message);
       else console.log('Tabela reviews criada ou já existente.');
     });
+    db.run(createCartItemsTable, (err) => {
+      if (err) console.error('Erro ao criar tabela cart_items:', err.message);
+      else console.log('Tabela cart_items criada ou já existente.');
+    });
+
+    db.run(createOrdersTable, (err) => {
+        if (err) {console.error('Erro ao criar tabela orders:', err.message);
+        } else {console.log('Tabela orders criada ou já existente.');}
+      });
 
     });
 
-  db.run(createOrdersTable, (err) => {
-    if (err) {
-      console.error('Erro ao criar tabela orders:', err.message);
-    } else {
-      console.log('Tabela orders criada ou já existente.');
-    }
-  });
+  
 
 
 

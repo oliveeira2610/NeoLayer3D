@@ -1,11 +1,10 @@
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../config/jwt");
-const User = require("../models/User");
 const path = require("path");
+const sqlite3 = require("sqlite3").verbose();
+const { promisify } = require("util");
 
-const protect = (req, res, next) => {
-  let token;
-
+const protect = async (req, res, next) => {
   console.log("🛡️ Middleware 'protect' ativado");
 
   if (
@@ -13,35 +12,35 @@ const protect = (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     try {
-      token = req.headers.authorization.split(" ")[1];
+      const token = req.headers.authorization.split(" ")[1];
       console.log("🔑 Token recebido:", token);
 
       const decoded = jwt.verify(token, jwtSecret);
       console.log("📜 Token decodificado:", decoded);
 
-      // Se você estiver usando SQLite puro, o User.findById pode não funcionar.
-      // Troque isso por uma consulta manual, assim como nas outras rotas:
-      const dbPath = path.resolve(__dirname, '../../database/database.db');
-      const sqlite3 = require('sqlite3').verbose();
+      const dbPath = path.resolve(__dirname, "../../database/database.db");
       const db = new sqlite3.Database(dbPath);
 
-      const query = `SELECT * FROM users WHERE id = ?`;
-      db.get(query, [decoded.id], (err, user) => {
-        if (err || !user) {
-          console.error("❌ Erro ao buscar usuário no middleware:", err);
-          return res.status(401).json({ message: "Não autorizado, token falhou." });
-        }
+      // promisify para usar await
+      const dbGet = promisify(db.get).bind(db);
 
-        console.log("✅ Usuário autenticado no middleware:", user.email);
+      const user = await dbGet(`SELECT * FROM users WHERE id = ?`, [decoded.id]);
 
-        req.user = {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          isAdmin: user.is_admin === 1
-        };
-        next();
-      });
+      if (!user) {
+        console.error("❌ Usuário não encontrado no middleware");
+        return res.status(401).json({ message: "Não autorizado, token falhou." });
+      }
+
+      console.log("✅ Usuário autenticado no middleware:", user.email);
+
+      req.user = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.is_admin === 1,
+      };
+
+      next();
     } catch (error) {
       console.error("❌ Erro na verificação do token:", error);
       res.status(401).json({ message: "Não autorizado, token inválido." });
@@ -52,7 +51,6 @@ const protect = (req, res, next) => {
   }
 };
 
-
 const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
@@ -62,4 +60,3 @@ const admin = (req, res, next) => {
 };
 
 module.exports = { protect, admin };
-

@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes"); // Assuming userRoutes will be created later if needed for user management
 const categoryRoutes = require("./routes/categoryRoutes");
 const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require('./routes/cartRoutes');
 
 // Initialize Express app
 const app = express();
@@ -25,6 +26,10 @@ app.use("/api/auth", authRoutes);
 // app.use("/api/users", userRoutes); // Keep commented if not implemented yet
 app.use("/api/categories", categoryRoutes); // Use category routes
 app.use("/api/products", productRoutes); // Use product routes
+
+app.use('/api/cart', cartRoutes);
+
+
 
 // Error Handling Middleware (Placeholder - implement if needed)
 // const errorMiddleware = require("./middleware/errorMiddleware");

@@ -1,3 +1,10 @@
+# Ignorar node_modules globalmente (funciona se estiverem na raiz)
+node_modules/
+
+# Ignorar node_modules de subpastas explicitamente
+frontend/node_modules/
+backend/node_modules/
+
 # Logs
 logs
 *.log
@@ -7,12 +14,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Build
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor e sistema
 .vscode/*
 !.vscode/extensions.json
 .idea

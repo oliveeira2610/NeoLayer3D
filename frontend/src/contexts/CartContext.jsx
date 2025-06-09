@@ -1,100 +1,81 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import * as cartService from '../services/cartService';
 
-const CartContext = createContext(null);
-
-const CART_STORAGE_KEY = 'neolayer3d_cart';
+const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [isCartInitialized, setIsCartInitialized] = useState(false);
+  const [cart, setCart] = useState([]);
 
-  // Load cart from localStorage on initial mount
-  useEffect(() => {
+  const loadCart = async () => {
     try {
-      const storedCart = localStorage.getItem(CART_STORAGE_KEY);
-      if (storedCart) {
-        setCartItems(JSON.parse(storedCart));
-      }
+      const res = await cartService.fetchCart();
+      setCart(res.data);
     } catch (error) {
-      console.error("Erro ao carregar carrinho do localStorage:", error);
-      localStorage.removeItem(CART_STORAGE_KEY); // Clear corrupted data
-    }
-    setIsCartInitialized(true);
-  }, []);
-
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    // Only save after initial load to prevent overwriting with empty array
-    if (isCartInitialized) {
-        try {
-            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
-        } catch (error) {
-            console.error("Erro ao salvar carrinho no localStorage:", error);
-        }
-    }
-  }, [cartItems, isCartInitialized]);
-
-  const addToCart = (product, quantityToAdd = 1) => {
-    setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id);
-      if (existingItem) {
-        // Increase quantity if item already exists
-        return prevItems.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantityToAdd }
-            : item
-        );
+      if (error.response?.status === 401) {
+        console.warn("Usuário não autenticado, carrinho não será carregado.");
       } else {
-        // Add new item to cart
-        return [...prevItems, { ...product, quantity: quantityToAdd }];
+        console.error("Erro ao carregar carrinho:", error);
       }
-    });
-  };
-
-  const removeFromCart = (productId) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
-  };
-
-  const updateQuantity = (productId, newQuantity) => {
-    const quantity = parseInt(newQuantity);
-    if (isNaN(quantity) || quantity < 1) {
-      // If invalid quantity or less than 1, remove the item
-      removeFromCart(productId);
-      return;
     }
-    setCartItems(prevItems =>
-      prevItems.map(item =>
-        item.id === productId ? { ...item, quantity: quantity } : item
-      )
-    );
   };
 
-  const clearCart = () => {
-    setCartItems([]);
+  const addToCart = async (product, quantity = 1) => {
+    await cartService.addToCart(product.id, quantity);
+    await loadCart();
   };
 
-  const getCartTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const updateItemQuantity = async (productId, quantity) => {
+    await cartService.updateCartItem(productId, quantity);
+    await loadCart();
+  };
+
+  const removeItem = async (productId) => {
+  try {
+    await cartService.removeCartItem(productId);
+    await loadCart(); // recarrega do backend para garantir sincronização
+  } catch (error) {
+    console.error('Erro ao remover item:', error);
+  }
+};
+
+
+
+  const clearCart = async () => {
+    try {
+      await cartService.clearCart();
+      await loadCart();
+    } catch (error) {
+      console.error("Erro ao limpar carrinho:", error);
+    }
   };
 
   const getCartItemCount = () => {
-    return cartItems.reduce((count, item) => count + item.quantity, 0);
+    return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
+  const getCartTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  useEffect(() => {
+    loadCart();
+  }, []);
+
   return (
-    <CartContext.Provider value={{ 
-        cartItems, 
-        addToCart, 
-        removeFromCart, 
-        updateQuantity, 
-        clearCart, 
-        getCartTotal, 
-        getCartItemCount 
-    }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        updateItemQuantity,
+        removeItem,
+        clearCart,
+        getCartItemCount,
+        getCartTotal,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
 
 export const useCart = () => useContext(CartContext);
-

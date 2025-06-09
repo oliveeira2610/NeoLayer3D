@@ -7,15 +7,15 @@ import logoImage from '../../../public/images/logo.png';
 
 function Header() {
   const { user, logout } = useAuth();
-  const { getCartItemCount } = useCart();
+  const { cart, getCartItemCount } = useCart();
   const [cartItemCount, setCartItemCount] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCartItemCount(getCartItemCount());
-  }, [getCartItemCount]);
+  setCartItemCount(getCartItemCount());
+}, [cart]);;
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -42,6 +42,8 @@ function Header() {
     };
   }, [isUserMenuOpen]);
 
+
+
   return (
     <header className="nl3d-header">
       <div className="nl3d-container">
@@ -58,7 +60,12 @@ function Header() {
             <li><NavLink to="/categorias" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Categorias</NavLink></li>
             <li><NavLink to="/sobre" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Sobre Nós</NavLink></li>
             <li><NavLink to="/contato" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Contato</NavLink></li>
-            <li><NavLink to="/blog" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Blog</NavLink></li>
+            <li><NavLink to="/carrinho" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Carrinho ({cartItemCount})</NavLink></li>
+            
+            <li><NavLink to="/termos-de-servico" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Termos de Serviço</NavLink></li>
+            <li><NavLink to="/politica-de-privacidade" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Política de Privacidade</NavLink></li>
+            <li><NavLink to="/faq" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>FAQ</NavLink></li>
+
             {user?.isAdmin && (
               <li><NavLink to="/admin" className={({ isActive }) => isActive ? 'nl3d-nav-active' : ''} onClick={closeMobileMenu}>Admin</NavLink></li>
             )}
