@@ -49,6 +49,14 @@
   padding-top: 20px;
 }
 
+.nl3d-user-name{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap : 10px;
+  color: white;
+}
+
 .nl3d-user-menu {
   display: flex;
   align-items: start;
@@ -66,6 +74,8 @@
   color: white;
   font-size: 20px;
   margin-right: 5px;
+  width: 30px;
+  height: 30px;
 }
 
 .nl3d-user-dropdown {

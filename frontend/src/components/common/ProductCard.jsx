@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext'; // Import useCart
-import './ProductCard.css'; 
+import { useCart } from '../../contexts/CartContext';
+import './ProductCard.css';
 
 function ProductCard({ product }) {
-  const { addToCart } = useCart(); // Get addToCart function from context
+  const { addToCart } = useCart();
 
-  const handleAddToCart = (e) => {
-    e.preventDefault(); 
+  const handleAddToCart = async (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    addToCart(product, 1); // Call actual add to cart function
-    // Optionally show a confirmation message/toast
-    // alert(`${product.name} adicionado ao carrinho!`); 
+
+    try {
+      await addToCart(product, 1);
+      alert(`${product.name} adicionado ao carrinho!`);
+    } catch (err) {
+      const msg = err.response?.data?.error || 'Erro ao adicionar ao carrinho.';
+      alert(msg); // Mostra "Quantidade excede o estoque disponível" se vier do backend
+    }
   };
 
   return (
@@ -22,7 +27,7 @@ function ProductCard({ product }) {
             src={product.image_url || '/images/placeholder.png'} 
             alt={product.name} 
             className="product-card-img" 
-            onError={(e) => { e.target.onerror = null; e.target.src='/images/placeholder.png'; }}
+            onError={(e) => { e.target.onerror = null; e.target.src = '/images/placeholder.png'; }}
           />
         </div>
         <div className="product-card-content">

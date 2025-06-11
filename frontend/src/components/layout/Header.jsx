@@ -70,25 +70,19 @@ function Header() {
           
         </nav>
         <div className="nl3d-login">
-  {user ? (
-    <div className="nl3d-user-menu">
-      <span onClick={toggleUserMenu} className="nl3d-user-name">
-      <PersonCircle  className='nl3d-user' />
-        Olá, {user.name || 'Minha Conta'} ▼
-      </span>
-      {isUserMenuOpen && (
-        <div className="nl3d-user-dropdown">
-          <Link to="/perfil" onClick={() => setIsUserMenuOpen(false)}>Perfil</Link>
-          <button onClick={handleLogout}>Sair</button>
+          {user ? (
+            <div className="nl3d-user-menu">
+              <Link to="/perfil"  className="nl3d-user-name">
+              <PersonCircle  className='nl3d-user' />
+              Seu Perfil 
+              </Link>      
+            </div>
+          ) : (
+            <Link to="/login" className="nl3d-loginLink">
+              Olá, faça Login ou Cadastre-se
+            </Link>
+          )}
         </div>
-      )}
-    </div>
-  ) : (
-    <Link to="/login" className="nl3d-loginLink">
-      Olá, faça Login ou Cadastre-se
-    </Link>
-  )}
-</div>
 
       </div>
     </header>

@@ -40,21 +40,21 @@ function RegisterPage() {
 
     setLoading(true);
 
-const result = await register({
-  name,
-  email,
-  password,
-  birth_date: birthDate,
-  cpf_cnpj: cpfCnpj,
-  phone,
-  cep,
-  street,
-  number,
-  complement,
-  district,
-  city,
-  state
-});
+    const result = await register({
+      name,
+      email,
+      password,
+      birth_date: birthDate,
+      cpf_cnpj: cpfCnpj,
+      phone,
+      cep,
+      street,
+      number,
+      complement,
+      district,
+      city,
+      state
+    });
 
 
     setLoading(false);
@@ -67,6 +67,36 @@ const result = await register({
         setFormError(result.error || 'Ocorreu um erro no registro.');
     }
   };
+
+  // Função para buscar dados do ViaCEP ao preencher o CEP
+  const handleCepChange = async (e) => {
+    const cepInput = e.target.value.replace(/\D/g, '');
+    setCep(cepInput);
+
+    if (cepInput.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cepInput}/json/`);
+        const data = await response.json();
+
+        if (!data.erro) {
+          setStreet(data.logradouro || '');
+          setDistrict(data.bairro || '');
+          setCity(data.localidade || '');
+          setState(data.uf || '');
+        } else {
+          setFormError('CEP não encontrado.');
+          setStreet('');
+          setDistrict('');
+          setCity('');
+          setState('');
+        }
+      } catch (error) {
+        console.error('Erro ao buscar o CEP:', error);
+        setFormError('Erro ao buscar o CEP.');
+      }
+    }
+  };
+
 
   return (
     <div className="auth-page"> {/* Add CSS class */} 
@@ -140,7 +170,8 @@ const result = await register({
     type="text"
     id="cep"
     value={cep}
-    onChange={(e) => setCep(e.target.value)}
+    onChange={handleCepChange}
+    maxLength={9}
     required
     disabled={loading}
   />

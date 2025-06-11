@@ -60,8 +60,11 @@ export const createCategory = (categoryData) => apiClient.post('/categories', ca
 export const updateCategory = (id, categoryData) => apiClient.put(`/categories/${id}`, categoryData);
 export const deleteCategory = (id) => apiClient.delete(`/categories/${id}`);
 
+
 // --- Products ---
 export const getAllProducts = (params) => apiClient.get('/products', { params });
+
+
 export const getProductById = (id) => apiClient.get(`/products/${id}`);
 export const createProduct = (productData) => apiClient.post('/products', productData);
 export const updateProduct = (id, productData) => apiClient.put(`/products/${id}`, productData);

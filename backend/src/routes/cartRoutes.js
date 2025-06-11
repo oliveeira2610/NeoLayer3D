@@ -39,27 +39,27 @@ router.get("/", protect, async (req, res) => {
   }
 });
 
-// POST /api/cart
-router.post("/", protect, async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const { product_id, quantity } = req.body;
+// // POST /api/cart
+// router.post("/", protect, async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+//     const { product_id, quantity } = req.body;
 
-    const query = `
-      INSERT INTO cart_items (user_id, product_id, quantity)
-      VALUES (?, ?, ?)
-      ON CONFLICT(user_id, product_id) DO UPDATE SET quantity = quantity + excluded.quantity
-    `;
+//     const query = `
+//       INSERT INTO cart_items (user_id, product_id, quantity)
+//       VALUES (?, ?, ?)
+//       ON CONFLICT(user_id, product_id) DO UPDATE SET quantity = quantity + excluded.quantity
+//     `;
 
-    await dbRun(query, [userId, product_id, quantity]);
+//     await dbRun(query, [userId, product_id, quantity]);
 
-    console.log(`Item adicionado/atualizado no carrinho: userId=${userId}, product_id=${product_id}, quantity=${quantity}`);
-    res.status(200).json({ message: "Item adicionado ao carrinho." });
-  } catch (err) {
-    console.error("Erro ao adicionar item:", err);
-    res.status(500).json({ message: "Erro ao adicionar item." });
-  }
-});
+//     console.log(`Item adicionado/atualizado no carrinho: userId=${userId}, product_id=${product_id}, quantity=${quantity}`);
+//     res.status(200).json({ message: "Item adicionado ao carrinho." });
+//   } catch (err) {
+//     console.error("Erro ao adicionar item:", err);
+//     res.status(500).json({ message: "Erro ao adicionar item." });
+//   }
+// });
 
 // PUT /api/cart/:product_id
 router.put("/:product_id", protect, async (req, res) => {
@@ -114,5 +114,44 @@ router.delete("/", protect, async (req, res) => {
   }
 });
 
+
+router.post('/add', protect, (req, res) => {
+  const user_id = req.user.id;
+  const { product_id, quantityToAdd } = req.body;
+
+  const queryStock = `SELECT stock FROM products WHERE id = ?`;
+  const queryCart = `SELECT quantity FROM cart_items WHERE user_id = ? AND product_id = ?`;
+
+  db.get(queryStock, [product_id], (err, product) => {
+    if (err || !product) return res.status(400).json({ error: 'Produto não encontrado' });
+
+    const availableStock = product.stock;
+
+    db.get(queryCart, [user_id, product_id], (err, item) => {
+      const currentQty = item ? item.quantity : 0;
+      const newQty = currentQty + quantityToAdd;
+
+      if (newQty > availableStock) {
+        return res.status(400).json({ error: 'Quantidade excede o estoque disponível' });
+      }
+
+      if (item) {
+        // Atualiza
+        const update = `UPDATE cart_items SET quantity = ? WHERE user_id = ? AND product_id = ?`;
+        db.run(update, [newQty, user_id, product_id], (err) => {
+          if (err) return res.status(500).json({ error: 'Erro ao atualizar o carrinho' });
+          res.json({ success: true, message: 'Quantidade atualizada com sucesso' });
+        });
+      } else {
+        // Insere
+        const insert = `INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)`;
+        db.run(insert, [user_id, product_id, quantityToAdd], (err) => {
+          if (err) return res.status(500).json({ error: 'Erro ao adicionar ao carrinho' });
+          res.json({ success: true, message: 'Produto adicionado ao carrinho' });
+        });
+      }
+    });
+  });
+});
 
 module.exports = router;

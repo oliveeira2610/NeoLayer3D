@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext'; // ✅ correto
-
+import { addToCart } from '../services/cartService';
 import './CartPage.css';
 
 function CartPage() {
@@ -35,6 +35,22 @@ function CartPage() {
       updateItemQuantity(productId, currentQuantity - 1);
     }
   };
+
+
+const handleAddToCart = async () => {
+  try {
+    const res = await addToCart(currentUser.id, selectedProduct.id, 1);
+
+    alert(res.data.message); // "Produto adicionado ao carrinho" ou outro sucesso
+  } catch (err) {
+    if (err.response && err.response.data?.error) {
+      alert(err.response.data.error); // Exemplo: "Quantidade excede o estoque disponível"
+    } else {
+      alert('Erro inesperado ao adicionar ao carrinho.');
+    }
+  }
+};
+
 
   if (!Array.isArray(cart) || cart.length === 0) {
     return (

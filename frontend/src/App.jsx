@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Layouts
 import MainLayout from './layouts/MainLayout';
@@ -92,6 +94,20 @@ function App() {
             {/* Catch-all or Not Found Route */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+          <ToastContainer 
+  position="top-right"
+  autoClose={300}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="colored" // ou 'light' / 'dark'
+  toastStyle={{ borderRadius: '8px', fontSize: '14px' }}
+/>
+
         </Router>
       </CartProvider>
     </AuthProvider>
