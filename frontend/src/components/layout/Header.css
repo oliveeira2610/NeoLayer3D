@@ -1,7 +1,8 @@
 /* Header Styles */
 .nl3d-header {
   background-color: var(--azul-escuro);
-  padding: 15px 0;
+  height: 12vh;
+  padding: 25px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -9,24 +10,88 @@
 }
 
 .nl3d-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
 }
 
 .nl3d-navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 /* Logo */
 .nl3d-logo {
   display: flex;
-  align-items: center;
+  align-items: end;
   text-decoration: none;
+  padding-left: 30px;
+  width: 260px;
 }
+
+.nl3d-login{
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.nl3d-loginLink{
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  width: 260px;
+  padding-right: 40px;
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: 500;
+  padding-top: 20px;
+}
+
+.nl3d-user-menu {
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  width: 260px;
+  padding-right: 40px;
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: 500;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.nl3d-user {
+  color: white;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.nl3d-user-dropdown {
+  position: relative;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  
+}
+
+.nl3d-user-dropdown a,
+.nl3d-user-dropdown button {
+  margin-bottom: 8px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+}
+
 
 .nl3d-logo-img {
   height: 40px;
@@ -45,7 +110,7 @@
   display: flex;
   list-style: none;
   margin: 0;
-  padding: 0;
+
 }
 
 .nl3d-nav-links li {
@@ -53,12 +118,20 @@
 }
 
 .nl3d-nav-links a {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 50px;
   color: var(--branco);
   text-decoration: none;
   font-weight: 500;
   transition: var(--transicao-padrao);
-  padding: 5px 0;
+
+  padding-top: 20px ;
   position: relative;
+
+  
 }
 
 .nl3d-nav-links a:hover {
@@ -83,6 +156,7 @@
 .nl3d-nav-actions {
   display: flex;
   align-items: center;
+ 
 }
 
 .nl3d-search-icon,
@@ -154,6 +228,7 @@
   align-items: center;
   gap: 8px;
   padding: 5px;
+  width: 150px;
 }
 
 .nl3d-user-greeting {

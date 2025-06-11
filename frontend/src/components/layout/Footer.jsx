@@ -23,10 +23,12 @@ function Footer() {
             <ul className="footer-links">
               <li><Link to="/">Início</Link></li>
               <li><Link to="/categorias">Categorias</Link></li>
-              {/* <li><Link to="/sobre">Sobre Nós</Link></li> */}
-              {/* <li><Link to="/contato">Contato</Link></li> */}
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/register">Registrar</Link></li>
+              <li><Link to="/sobre">Sobre Nós</Link></li> 
+              <li><Link to="/contato">Contato</Link></li> 
+              <li><Link to="/termos-de-servico" >Termos de Serviço</Link></li>
+              <li><Link to="/politica-de-privacidade" >Política de Privacidade</Link></li>
+              {/* <li><Link to="/login">Login</Link></li>
+              <li><Link to="/register">Registrar</Link></li> */}
             </ul>
           </div>
           <div className="footer-column">
